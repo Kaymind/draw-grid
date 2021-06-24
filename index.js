@@ -42,7 +42,7 @@ const drawTable = (table, tableSize) => {
           : column === 'x'
           ? 'grey'
           : 'white'
-      }; width: ${Math.floor(100 / tableSize)}%; height: ${
+      }; width: ${100 / tableSize}%; height: ${
         100 / tableSize
       }%' class='box'></div>`;
     });
