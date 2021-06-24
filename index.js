@@ -12,41 +12,29 @@ let tableSize;
 
 const createTable = (rows, columns, tracking, origin, tableSize) => {
   let array = new Array(rows);
-  console.log('tracking.slice(-1)[0]', tracking.slice(-1)[0][0]);
-  console.log('tracking.slice(-1)[1]', tracking.slice(-1)[0][1]);
 
   for (let i = 0; i < rows; i++) {
     array[i] = new Array(columns);
     for (let j = 0; j < columns; j++) {
       array[i][j] =
         i === origin && j === origin
-          ? 'start'
+          ? (container.innerHTML += `<div style='background-color:green; width: ${
+              100 / tableSize
+            }%; height: ${100 / tableSize}%' class='box'></div>`)
           : i === tracking.slice(-1)[0][1] && j === tracking.slice(-1)[0][0]
-          ? 'end'
+          ? (container.innerHTML += `<div style='background-color:red; width: ${
+              100 / tableSize
+            }%; height: ${100 / tableSize}%' class='box'></div>`)
           : tracking.find((step) => step[1] === i && step[0] === j)
-          ? 'x'
-          : 'y';
+          ? (container.innerHTML += `<div style='background-color:grey; width: ${
+              100 / tableSize
+            }%; height: ${100 / tableSize}%' class='box'></div>`)
+          : (container.innerHTML += `<div style='background-color:white; width: ${
+              100 / tableSize
+            }%; height: ${100 / tableSize}%' class='box'></div>`);
     }
   }
   return array;
-};
-
-const drawTable = (table, tableSize) => {
-  table.forEach((row) => {
-    row.forEach((column) => {
-      container.innerHTML += `<div style='background-color:${
-        column === 'end'
-          ? 'red'
-          : column === 'start'
-          ? 'green'
-          : column === 'x'
-          ? 'grey'
-          : 'white'
-      }; width: ${100 / tableSize}%; height: ${
-        100 / tableSize
-      }%' class='box'></div>`;
-    });
-  });
 };
 
 const handleSubmit = (e) => {
@@ -113,8 +101,7 @@ const handleSubmit = (e) => {
     }
   });
 
-  const table = createTable(tableSize, tableSize, tracking, origin);
-  drawTable(table, tableSize);
+  const table = createTable(tableSize, tableSize, tracking, origin, tableSize);
 };
 
 submitEl.addEventListener('click', handleSubmit);
