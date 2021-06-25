@@ -29,15 +29,13 @@ const createTable = (rows, columns, tracking, origin, tableSize) => {
   }
 };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+const handleSubmit = () => {
   container.innerHTML = '';
   let maxX = 0;
   let maxY = 0;
   let tempMaxX = 0;
   let tempMaxY = 0;
   let tracking = [];
-  let resultTable;
   let tableSize;
 
   const inputArray = inputEl.value.split('');
@@ -93,7 +91,7 @@ const handleSubmit = (e) => {
     }
   });
 
-  const table = createTable(tableSize, tableSize, tracking, origin, tableSize);
+  createTable(tableSize, tableSize, tracking, origin, tableSize);
 };
 
 submitEl.addEventListener('click', handleSubmit);
