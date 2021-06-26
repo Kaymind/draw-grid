@@ -4,11 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-}
-
 #container {
   display: flex;
   flex-wrap: wrap;
@@ -32,7 +27,4 @@ body {
 
 #input {
   max-width: 400px;
-}
-
-#submit {
 }
