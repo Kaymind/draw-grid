@@ -3,17 +3,17 @@ const submitEl = document.getElementById('submit');
 const container = document.getElementById('container');
 
 const createTable = (rows, columns, tracking, origin, tableSize) => {
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
-      if (i === tracking.slice(-1)[0][1] && j === tracking.slice(-1)[0][0]) {
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < columns; x++) {
+      if (y === tracking.slice(-1)[0][1] && x === tracking.slice(-1)[0][0]) {
         container.innerHTML += `<div style='background-color:red; width: ${
           100 / tableSize
         }%; height: ${100 / tableSize}%' class='box'></div>`;
-      } else if (i === origin && j === origin) {
+      } else if (y === origin && x === origin) {
         container.innerHTML += `<div style='background-color:green; width: ${
           100 / tableSize
         }%; height: ${100 / tableSize}%' class='box'></div>`;
-      } else if (tracking.find((step) => step[1] === i && step[0] === j)) {
+      } else if (tracking.find((step) => step[1] === y && step[0] === x)) {
         container.innerHTML += `<div style='background-color:grey; width: ${
           100 / tableSize
         }%; height: ${100 / tableSize}%' class='box'></div>`;
