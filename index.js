@@ -5,7 +5,19 @@ const container = document.getElementById('container');
 const createTable = (rows, columns, tracking, origin, tableSize) => {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < columns; x++) {
-      if (y === tracking.slice(-1)[0][1] && x === tracking.slice(-1)[0][0]) {
+      if (
+        y === tracking.slice(-1)[0][1] &&
+        origin === tracking.slice(-1)[0][1] &&
+        x === tracking.slice(-1)[0][0] &&
+        origin === tracking.slice(-1)[0][0]
+      ) {
+        container.innerHTML += `<div style='background-color:orange; width: ${
+          100 / tableSize
+        }%; height: ${100 / tableSize}%' class='box'></div>`;
+      } else if (
+        y === tracking.slice(-1)[0][1] &&
+        x === tracking.slice(-1)[0][0]
+      ) {
         container.innerHTML += `<div style='background-color:red; width: ${
           100 / tableSize
         }%; height: ${100 / tableSize}%' class='box'></div>`;
