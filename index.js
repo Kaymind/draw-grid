@@ -5,15 +5,12 @@ const container = document.getElementById('container');
 const createTable = (rows, columns, tracking, origin, tableSize) => {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
-      if (i === origin && j === origin) {
-        container.innerHTML += `<div style='background-color:green; width: ${
+      if (i === tracking.slice(-1)[0][1] && j === tracking.slice(-1)[0][0]) {
+        container.innerHTML += `<div style='background-color:red; width: ${
           100 / tableSize
         }%; height: ${100 / tableSize}%' class='box'></div>`;
-      } else if (
-        i === tracking.slice(-1)[0][1] &&
-        j === tracking.slice(-1)[0][0]
-      ) {
-        container.innerHTML += `<div style='background-color:red; width: ${
+      } else if (i === origin && j === origin) {
+        container.innerHTML += `<div style='background-color:green; width: ${
           100 / tableSize
         }%; height: ${100 / tableSize}%' class='box'></div>`;
       } else if (tracking.find((step) => step[1] === i && step[0] === j)) {
